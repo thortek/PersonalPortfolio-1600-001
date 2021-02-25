@@ -32,5 +32,51 @@ let myBool = true
 // Array
 
 let myArray = [] // this is an empty array
-
+//              0     1      2        3      4
 let myArray2 = [42, 'Bob', myBool, ANSWER, true]
+
+let secondElement = myArray2[1]
+
+myArray2.push('Thor') // added an element to the end of myArray2
+
+myArray2.unshift('Hello World!')
+
+let mylongString = '32408usfjalieriweur938u425ksdjfowiur84uwrlwshdjfo8wuroiwejr4e' // just an array of characters
+
+mylongString.length
+
+// Object
+
+let minObject = {}
+
+const myCar = {
+    make: "Chevrolet",
+    color: "Red",
+    year: "1965",
+    vin: "2390487sijweoru38lirehs"
+  };
+  
+  myCar.numDoors = 2;
+  
+  const anotherObject = {
+    wordz: ["foo", "bar", "baz"],
+    car: {
+      make: "McLaren",
+      model: "675LT"
+    },
+    awesomeness: true
+  };
+  
+  // Functions
+  
+  function myFunction() {
+    return "My greeting to you...";
+  }
+  
+  function sumTwoThings(one, two) {
+    // watch out for data type issues here!
+    return one + two; // if numbers, will add them.  If strings, will concatenate.
+  }
+  
+  // Arrow Functions
+  
