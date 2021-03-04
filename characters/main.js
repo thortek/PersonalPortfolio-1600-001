@@ -8,12 +8,12 @@ const maleButton = document.createElement('button')
 maleButton.textContent = 'Male Characters'
 mainHeader.appendChild(maleButton)
 
+maleButton.addEventListener('click', () => populateDOM(maleCharacters))
+
 document.body.insertBefore(mainHeader, mainElement)
 
 const maleCharacters = people.filter(person => person.gender === 'male')
 const femaleCharacters = people.filter(person => person.gender === 'female')
-
-populateDOM(femaleCharacters)
 
 function populateDOM(characters) {
     characters.forEach((person) => {
