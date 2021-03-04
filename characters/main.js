@@ -1,0 +1,1 @@
+console.log('We are in main.js now')
