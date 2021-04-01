@@ -17,6 +17,7 @@ function populateCongressGrid(simplePeople) {
     console.log(simplePeople)
     simplePeople.forEach(person => {
         let personDiv = document.createElement('div')
+        personDiv.className = 'figureDiv'
         let personFig = document.createElement('figure')
         let figImg = document.createElement('img')
         let figCaption = document.createElement('figcaption')
