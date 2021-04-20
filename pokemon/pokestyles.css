@@ -41,7 +41,7 @@
   }
 
   .card__face--front {
-    background: red;
+    /* background: red; */
   }
 
   .card__face--front img {
@@ -50,6 +50,30 @@
   }
   
   .card__face--back {
-    background: blue;
+    background: rgb(206, 206, 240);
     transform: rotateY(180deg);
+  }
+
+  .grass {
+    background-color: green;
+  }
+
+  .fire {
+    box-shadow: 10px 5px 5px red;
+  }
+
+  .water {
+    box-shadow: 10px 5px 5px blue;
+  }
+
+  .bug {
+    background-color: chartreuse;
+  }
+
+  .normal {
+    background-color: beige;
+  }
+
+  .flying {
+    background-color: aqua;
   }
