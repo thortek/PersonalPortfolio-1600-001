@@ -21,7 +21,9 @@ newButton.addEventListener('click', () => {
   let pokeName = prompt('What is the name of your new Pokemon?')
   // let pokeHeight = prompt('What is the height of your Pokemon?')
   // let pokeWeight = prompt('Pokemon weight?')
-  let pokeAbilities = prompt('What are your Pokemon abilities? (use a comma separated list)')
+  let pokeAbilities = prompt(
+    'What are your Pokemon abilities? (use a comma separated list)',
+  )
   let pokeMove = prompt("What is your Pokemon's best move")
   let abilitiesArray = getAbilitiesArray(pokeAbilities)
   let newPokemon = new Pokemon(
@@ -32,9 +34,9 @@ newButton.addEventListener('click', () => {
     [
       {
         move: {
-          name: pokeMove
-        }
-      }
+          name: pokeMove,
+        },
+      },
     ],
     [
       {
@@ -52,12 +54,11 @@ function getAbilitiesArray(commaString) {
   return tempArray.map((abilityName) => {
     return {
       ability: {
-        name: abilityName
-      }
+        name: abilityName,
+      },
     }
   })
 }
-
 
 fetchButton.addEventListener('click', () => {
   let pokeNameOrId = prompt('Enter Pokemon ID or Name:').toLowerCase()
@@ -79,7 +80,7 @@ async function getAPIData(url) {
 }
 
 function loadPage() {
-  getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=660`).then(
+  getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=25`).then(
     async (data) => {
       for (const singlePokemon of data.results) {
         await getAPIData(singlePokemon.url).then((pokeData) =>
@@ -114,12 +115,26 @@ function populateCardFront(pokemon) {
   let frontImage = document.createElement('img')
   frontImage.src = getImageFileName(pokemon)
 
-  frontImage.addEventListener('error', (err) => frontImage.src = 'images/pokeball.png')
+  frontImage.addEventListener(
+    'error',
+    (err) => (frontImage.src = 'images/pokeball.png'),
+  )
+
+
 
   typesBackground(pokemon, pokeFront)
 
   pokeFront.appendChild(frontLabel)
   pokeFront.appendChild(frontImage)
+
+  let pokeHeight = document.createElement('p')
+  pokeHeight.textContent = `Height: ${pokemon.height / 10} kg`
+  pokeFront.appendChild(pokeHeight)
+
+  let pokeWeight = document.createElement('p')
+  pokeWeight.textContent = `Weight: ${pokemon.weight / 10} kg`
+  pokeFront.appendChild(pokeWeight)
+
   return pokeFront
 }
 
@@ -147,7 +162,7 @@ function populateCardBack(pokemon) {
   pokeBack.appendChild(backLabel)
 
   let typeLabel = document.createElement('h3')
-  typeLabel.textContent = "Types:"
+  typeLabel.textContent = 'Types:'
   pokeBack.appendChild(typeLabel)
 
   pokemon.types.forEach((pokeType) => {
@@ -156,13 +171,13 @@ function populateCardBack(pokemon) {
     pokeBack.appendChild(backType)
   })
   let abilityLabel = document.createElement('h3')
-  abilityLabel.textContent = "Abilities:"
+  abilityLabel.textContent = 'Abilities:'
   pokeBack.appendChild(abilityLabel)
-   pokemon.abilities.forEach((pokeAbility) => {
-     let ability = document.createElement('p')
-     ability.textContent = pokeAbility.ability.name
-     pokeBack.appendChild(ability)
-   })
+  pokemon.abilities.forEach((pokeAbility) => {
+    let ability = document.createElement('p')
+    ability.textContent = pokeAbility.ability.name
+    pokeBack.appendChild(ability)
+  })
 
   pokemon.stats.forEach((stat) => {
     let statPara = document.createElement('p')
