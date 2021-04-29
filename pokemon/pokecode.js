@@ -4,7 +4,7 @@ const fetchButton = document.querySelector('#fetchSelectedPokemon')
 const newButton = document.querySelector('#newPokemon')
 
 class Pokemon {
-  constructor(name, height, weight, abilities, moves, types) {
+  constructor(name, height, weight, abilities, moves, types, stats) {
     this.id = 900
     this.name = name
     this.height = height
@@ -12,6 +12,7 @@ class Pokemon {
     this.abilities = abilities
     this.moves = moves
     this.types = types
+    this.stats = stats
   }
 }
 
@@ -45,6 +46,14 @@ newButton.addEventListener('click', () => {
         },
       },
     ],
+    [
+      {
+        base_stat: "90",
+        stat: {
+          name: "hp"
+        }
+      }
+    ]
   )
   populatePokeCard(newPokemon)
 })
